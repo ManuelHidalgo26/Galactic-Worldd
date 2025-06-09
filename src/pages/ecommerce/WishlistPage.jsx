@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Trash2, ShoppingBag, HeartCrack, Eye } from "lucide-react";
 import { motion } from "framer-motion";
+import { useToast } from "@/components/ui/use-toast";
 
 const WishlistItemCard = ({ item, onRemove, onAddToCart }) => (
   <motion.div
@@ -42,16 +43,30 @@ const WishlistPage = () => {
     { id: "alien-vortex", name: "Vórtice Alienígena", price: "32.50", imageSrc: "placeholder_alien.jpg", category: "Aliens" },
     { id: "nebula-dream", name: "Sueño Nebular", price: "35.00", imageSrc: "placeholder_nebula.jpg", category: "Abstracto" },
   ]);
+  const { toast } = useToast();
+
+  // Stub function to simulate adding an item to the cart
+  const addToCart = (item) => {
+    console.log("Añadido al carrito:", item);
+  };
 
   const handleRemoveItem = (itemId) => {
     setWishlistItems(prevItems => prevItems.filter(item => item.id !== itemId));
-    // TODO: Add toast notification
+    toast({
+      title: "Producto eliminado",
+      description: "El artículo fue retirado de tu lista de deseos.",
+      className: "bg-card text-foreground border-border",
+    });
   };
 
   const handleAddToCart = (item) => {
-    console.log("Añadido al carrito:", item);
-    // TODO: Add logic to add to cart and remove from wishlist, plus toast
-    handleRemoveItem(item.id);
+    addToCart(item);
+    toast({
+      title: "Añadido al carrito",
+      description: `${item.name} se agregó a tu carrito correctamente.`,
+      className: "bg-card text-foreground border-primary",
+    });
+    setWishlistItems(prevItems => prevItems.filter(w => w.id !== item.id));
   };
 
   return (
