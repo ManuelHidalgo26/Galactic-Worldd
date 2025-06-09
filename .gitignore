@@ -21,7 +21,7 @@ npm-debug.log
 wp-admin/
 wp-includes/
 license.txt
-readme.html
+readme.md
 
 # Configuración del servidor local
 wp-config.php
