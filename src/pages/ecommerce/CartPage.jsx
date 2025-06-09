@@ -16,7 +16,7 @@ const CartItem = ({ item, onRemove, onUpdateQuantity }) => (
     className="flex flex-col sm:flex-row items-center gap-4 py-5 border-b border-border/30"
   >
     <div className="w-24 h-28 sm:w-28 sm:h-32 rounded-md overflow-hidden bg-muted/50 flex-shrink-0">
-      <img  src={item.imageSrc} alt={item.name} class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1593989185402-2bd0721e5b46" />
+      <img  src={item.imageSrc} alt={item.name} className="w-full h-full object-cover" />
     </div>
     <div className="flex-grow text-center sm:text-left">
       <h3 className="text-lg font-semibold text-foreground">{item.name}</h3>

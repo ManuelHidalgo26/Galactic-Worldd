@@ -107,7 +107,7 @@ const CheckoutPage = () => {
                   <div key={item.id} className="flex items-center justify-between text-sm py-2 border-b border-border/30 last:border-b-0">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-14 rounded bg-muted/50 overflow-hidden">
-                        <img  src={item.imageSrc} alt={item.name} class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1551891002-8ac807480a53" />
+                        <img  src={item.imageSrc} alt={item.name} className="w-full h-full object-cover" />
                       </div>
                       <div>
                         <p className="font-medium text-foreground truncate max-w-[150px]">{item.name}</p>
