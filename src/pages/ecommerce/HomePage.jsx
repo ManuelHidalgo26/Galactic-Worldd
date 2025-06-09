@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, Zap, ShieldCheck, Truck, Star, Heart, Eye } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const ProductCard = ({ id, name, price, imageSrc, delay, isNew = false, onWishlistClick }) => (
   <motion.div
@@ -56,8 +57,13 @@ const FeatureHighlight = ({ icon, title, description }) => (
 );
 
 const HomePage = () => {
+  const { toast } = useToast();
   const handleWishlistClick = (productId) => {
-    console.log(`Producto ${productId} añadido/quitado de la lista de deseos`);
+    toast({
+      title: "Lista de deseos",
+      description: `Producto ${productId} añadido/quitado de la lista de deseos`,
+      className: "bg-card text-foreground border-primary",
+    });
   };
 
   const newArrivals = [
