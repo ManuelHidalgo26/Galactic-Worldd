@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const logoDark = "/logo-galactic-worldd-dark.svg";
+  const logoDark = "./public/logo_web_transparente.png";
 
   const toggleMenu = () => setIsOpen(!isOpen);
 

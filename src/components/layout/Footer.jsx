@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram, Youtube, ArrowUp, CreditCard, ShieldCheck, Sparkles } from "lucide-react";
 
 const Footer = () => {
-  const logoDark = "/logo-galactic-worldd-dark.svg";
+  const logoDark = "./public/logo_web_transparente.png";
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const socialLinks = [
-    { icon: <Instagram size={20} />, href: "#", label: "Instagram" },
+    { icon: <Instagram size={20} />, href: "https://www.instagram.com/galacticworldd/", label: "Instagram" },
     { icon: <Facebook size={20} />, href: "#", label: "Facebook" },
     { icon: <Twitter size={20} />, href: "#", label: "Twitter" },
     { icon: <Youtube size={20} />, href: "#", label: "Youtube" },
