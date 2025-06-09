@@ -16,7 +16,7 @@ const BlogPostCard = ({ title, excerpt, author, date, category, imageSrc, slug, 
     <Link to={`/blog/${slug}`} className="block">
       <div className="aspect-video bg-muted/50 overflow-hidden">
         <img 
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           alt={title}
          src="https://images.unsplash.com/photo-1504983875-d3b163aba9e6" />
       </div>

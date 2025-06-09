@@ -15,7 +15,7 @@ const WishlistItemCard = ({ item, onRemove, onAddToCart }) => (
   >
     <div className="w-28 h-36 sm:w-32 sm:h-40 rounded-md overflow-hidden bg-muted/50 flex-shrink-0">
       <img 
-        class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
         alt={item.name}
        src="https://images.unsplash.com/photo-1666358069309-e0d0acb8aacb" />
     </div>
