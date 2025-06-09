@@ -1,0 +1,24 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="grad-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#003366;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00AEEF;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow-dark">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="200" height="200" fill="#0A0A0F"/>
+  <g transform="translate(25, 25) scale(0.75)">
+    <path d="M100,10 C50.147,10 10,50.147 10,100 C10,149.853 50.147,190 100,190 C149.853,190 190,149.853 190,100 C190,50.147 149.853,10 100,10 Z M100,170 C61.309,170 30,138.691 30,100 C30,61.309 61.309,30 100,30 C138.691,30 170,61.309 170,100 C170,138.691 138.691,170 100,170 Z" fill="url(#grad-dark)"/>
+    <ellipse cx="100" cy="100" rx="75" ry="30" fill="none" stroke="url(#grad-dark)" stroke-width="10" transform="rotate(-30 100 100)"/>
+    <path d="M70,80 Q100,50 130,80 T70,140 Q100,110 130,140 T70,80" fill="#00AEEF" opacity="0.7" filter="url(#glow-dark)"/>
+    <circle cx="100" cy="100" r="15" fill="#FFFFFF" filter="url(#glow-dark)"/>
+    <circle cx="100" cy="100" r="10" fill="#00AEEF"/>
+  </g>
+</svg>

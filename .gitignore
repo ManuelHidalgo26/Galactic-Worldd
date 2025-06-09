@@ -1,0 +1,43 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos temporales y de entorno local
+*.log
+*.sql
+*.sqlite
+*.env
+*.zip
+
+# Configuración de editores
+.vscode/
+.idea/
+
+# Node y dependencias frontend si usás algo de build (opcional)
+node_modules/
+npm-debug.log
+
+# WordPress core
+wp-admin/
+wp-includes/
+license.txt
+readme.html
+
+# Configuración del servidor local
+wp-config.php
+.htaccess
+
+# Archivos de backup o temporales
+*.bak
+*.tmp
+*.swp
+
+# Plugins y temas (si no querés trackear todo el contenido)
+wp-content/plugins/
+wp-content/themes/
+
+# ¡O bien podés incluir solo tu tema personalizado!
+# !wp-content/themes/tu-tema-galactic/
+
+# Cargas multimedia
+wp-content/uploads/

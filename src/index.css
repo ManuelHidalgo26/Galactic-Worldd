@@ -1,0 +1,110 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 225 25% 6%; /* #0A0E14 - Deep Space Blue */
+    --foreground: 210 40% 98%; /* #F7F9FC - Almost White */
+
+    --muted: 225 20% 12%; /* #151A23 - Darker Space Blue */
+    --muted-foreground: 210 15% 65%; /* #98A0AC - Cool Medium Gray */
+
+    --popover: 225 30% 4%; /* #05070A - Very Dark Blue for popovers */
+    --popover-foreground: 210 40% 98%;
+
+    --card: 225 20% 9%; /* #0E121A - Dark Space Blue for cards */
+    --card-foreground: 210 40% 98%;
+
+    --border: 225 15% 20%; /* #29303D - Space Blue Border */
+    --input: 225 15% 16%; /* #1F2530 - Dark Input Background */
+
+    --primary: 195 90% 55%; /* #20C2FF - Bright Cyan Blue (accent, como el brillo del logo) */
+    --primary-foreground: 225 25% 10%; /* Dark blue text for primary buttons */
+    
+    --secondary: 210 100% 70%; /* #66B2FF - Lighter Sky Blue */
+    --secondary-foreground: 225 25% 10%; /* Dark blue text */
+
+    --accent: 195 80% 45%; /* #00AEEF - Darker Cyan Blue (hover accent) */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 72% 51%; /* #E53E3E - Red */
+    --destructive-foreground: 0 0% 98%;
+    
+    --ring: 195 90% 55%; /* Bright Cyan Blue for rings */
+    --radius: 0.75rem; 
+  }
+
+  .dark {
+    --background: 225 25% 6%; 
+    --foreground: 210 40% 98%; 
+    --muted: 225 20% 12%; 
+    --muted-foreground: 210 15% 65%; 
+    --popover: 225 30% 4%; 
+    --popover-foreground: 210 40% 98%;
+    --card: 225 20% 9%; 
+    --card-foreground: 210 40% 98%;
+    --border: 225 15% 20%; 
+    --input: 225 15% 16%; 
+    --primary: 195 90% 55%; 
+    --primary-foreground: 225 25% 10%; 
+    --secondary: 210 100% 70%; 
+    --secondary-foreground: 225 25% 10%; 
+    --accent: 195 80% 45%; 
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 195 90% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Roboto', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+    @apply text-foreground;
+  }
+}
+
+.section-padding {
+  @apply py-12 md:py-20 lg:py-28;
+}
+
+.cta-button {
+  @apply bg-primary text-primary-foreground hover:bg-accent transition-colors duration-300 shadow-md hover:shadow-primary/50;
+}
+
+.outline-cta-button {
+  @apply border-primary text-primary bg-transparent hover:bg-primary/10 transition-colors duration-300;
+}
+
+.glassmorphism-card {
+  @apply bg-card/70 backdrop-blur-lg border border-border/40 rounded-xl shadow-2xl;
+}
+
+.product-card-hover {
+  @apply hover:shadow-primary/20 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300;
+}
+
+.gradient-text-primary {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+}
+
+.hero-text-shadow {
+  text-shadow: 0px 2px 10px hsl(var(--primary) / 0.5);
+}
+
+.subtle-glow {
+  box-shadow: 0 0 15px 0px hsl(var(--primary) / 0.15);
+}
+
+.subtle-glow-hover {
+   @apply hover:shadow-[0_0_25px_0px_hsl(var(--primary)/0.25)];
+}
