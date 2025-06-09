@@ -47,7 +47,6 @@ const WishlistPage = () => {
 
   // Stub function to simulate adding an item to the cart
   const addToCart = (item) => {
-    console.log("Añadido al carrito:", item);
   };
 
   const handleRemoveItem = (itemId) => {

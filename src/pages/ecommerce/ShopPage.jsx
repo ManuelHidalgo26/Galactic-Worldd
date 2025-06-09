@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider"; 
 import { Search, ListFilter, X, Palette, Shirt, Tag as TagIcon, Star, Zap, Heart, Eye } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ProductItemCard = ({ id, name, price, imageSrc, category, onWishlistClick }) => (
@@ -56,9 +57,14 @@ const ShopPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [priceRange, setPriceRange] = useState([0, 100]);
+  const { toast } = useToast();
 
   const handleWishlistClick = (productId) => {
-    console.log(`Producto ${productId} añadido/quitado de la lista de deseos en ShopPage`);
+    toast({
+      title: "Lista de deseos",
+      description: `Producto ${productId} añadido/quitado de la lista de deseos en ShopPage`,
+      className: "bg-card text-foreground border-primary",
+    });
   };
 
   const allProducts = [
