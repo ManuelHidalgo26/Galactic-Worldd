@@ -1,12 +1,13 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, Zap, ShieldCheck, Truck, Star, Heart, Eye } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { getProductos } from "@/lib/firebase";
 
-const ProductCard = ({ id, name, price, imageSrc, delay, isNew = false, onWishlistClick }) => (
+const ProductCard = ({ producto, delay, isNew = false, onWishlistClick }) => (
   <motion.div
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -20,23 +21,24 @@ const ProductCard = ({ id, name, price, imageSrc, delay, isNew = false, onWishli
       </div>
     )}
      <button 
-        onClick={() => onWishlistClick(id)}
+        onClick={() => onWishlistClick(producto.id)}
         className="absolute top-3 left-3 z-10 p-2 bg-card/50 hover:bg-primary/20 rounded-full transition-colors duration-200"
         aria-label="Añadir a lista de deseos"
       >
         <Heart size={18} className="text-foreground/70 hover:text-red-500 hover:fill-red-500/30" />
     </button>
-    <Link to={`/tienda/${id}`} className="block flex-grow flex flex-col">
+    <Link to={`/tienda/${producto.id}`} className="block flex-grow flex flex-col">
       <div className="aspect-[3/4] bg-muted/30 overflow-hidden">
         <img 
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          alt={name}
-         src="https://images.unsplash.com/photo-1696497197483-8edbe1316cf7" />
+          alt={producto.nombre}
+         src={producto.imagen || "https://via.placeholder.com/300"} />
       </div>
       <div className="p-4 md:p-5 flex-grow flex flex-col justify-between">
         <div>
-          <h3 className="text-md lg:text-lg font-semibold text-foreground mb-1 truncate group-hover:text-primary transition-colors">{name}</h3>
-          <p className="text-primary font-bold text-lg lg:text-xl mb-3">${price}</p>
+          <h3 className="text-md lg:text-lg font-semibold text-foreground mb-1 truncate group-hover:text-primary transition-colors">{producto.nombre}</h3>
+          <p className="text-primary font-bold text-lg lg:text-xl mb-3">${producto.precio}</p>
+          <p className="text-sm text-muted-foreground">Talle: {producto.talle}</p>
         </div>
         <Button className="w-full cta-button text-sm py-2.5 mt-2">
           <Eye size={16} className="mr-2"/> Ver Detalles
@@ -66,17 +68,15 @@ const HomePage = () => {
     });
   };
 
-  const newArrivals = [
-    { id: "interstellar-journey", name: "Viaje Interestelar", price: "34.99", imageSrc: "placeholder_interstellar.jpg", delay: 0.1, isNew: true },
-    { id: "black-hole-design", name: "Abismo Agujero Negro", price: "31.50", imageSrc: "placeholder_blackhole.jpg", delay: 0.2, isNew: true },
-  ];
+  const [productos, setProductos] = useState([]);
 
-  const bestSellers = [
-    { id: "cosmic-explorer", name: "Explorador Cósmico", price: "29.99", imageSrc: "placeholder_cosmic.jpg", delay: 0.1 },
-    { id: "alien-vortex", name: "Vórtice Alienígena", price: "32.50", imageSrc: "placeholder_alien.jpg", delay: 0.2 },
-    { id: "galaxy-car", name: "Auto Galáctico", price: "28.00", imageSrc: "placeholder_galaxy_car.jpg", delay: 0.3 },
-    { id: "nebula-dream", name: "Sueño Nebular", price: "35.00", imageSrc: "placeholder_nebula.jpg", delay: 0.4 },
-  ];
+  useEffect(() => {
+    getProductos().then(setProductos).catch(console.error);
+  }, []);
+
+  const newArrivals = productos.slice(0, 4);
+
+  const bestSellers = productos.slice(4);
 
   const highlights = [
     { icon: <Zap />, title: "Diseños Únicos", description: "Estampados exclusivos inspirados en el cosmos." },
@@ -147,10 +147,7 @@ const HomePage = () => {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {newArrivals.map((product) => (
-              <ProductCard key={product.id} {...product} onWishlistClick={handleWishlistClick} />
-            ))}
-             {bestSellers.slice(0,2).map((product, index) => ( // Add 2 best sellers to fill the row
-              <ProductCard key={product.id} {...product} delay={product.delay + newArrivals.length * 0.1} onWishlistClick={handleWishlistClick} />
+              <ProductCard key={product.id} producto={product} onWishlistClick={handleWishlistClick} />
             ))}
           </div>
         </div>
@@ -172,7 +169,7 @@ const HomePage = () => {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {bestSellers.map((product) => (
-              <ProductCard key={product.id} {...product} onWishlistClick={handleWishlistClick}/>
+              <ProductCard key={product.id} producto={product} onWishlistClick={handleWishlistClick}/>
             ))}
           </div>
           <div className="text-center mt-16">
