@@ -191,10 +191,15 @@ export default defineConfig({
 		},
 		allowedHosts: true,
 	},
-	resolve: {
-		extensions: ['.jsx', '.js', '.tsx', '.ts', '.json', ],
-		alias: {
-			'@': path.resolve(__dirname, './src'),
-		},
-	},
+       resolve: {
+                extensions: ['.jsx', '.js', '.tsx', '.ts', '.json', ],
+                alias: {
+                        '@': path.resolve(__dirname, './src'),
+                },
+        },
+        test: {
+                globals: true,
+                environment: 'jsdom',
+                setupFiles: './vitest.setup.js',
+        },
 });
