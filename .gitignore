@@ -17,27 +17,8 @@ Thumbs.db
 node_modules/
 npm-debug.log
 
-# WordPress core
-wp-admin/
-wp-includes/
-license.txt
-readme.md
-
-# Configuración del servidor local
-wp-config.php
-.htaccess
-
 # Archivos de backup o temporales
 *.bak
 *.tmp
 *.swp
 
-# Plugins y temas (si no querés trackear todo el contenido)
-wp-content/plugins/
-wp-content/themes/
-
-# ¡O bien podés incluir solo tu tema personalizado!
-# !wp-content/themes/tu-tema-galactic/
-
-# Cargas multimedia
-wp-content/uploads/
