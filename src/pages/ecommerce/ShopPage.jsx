@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider"; 
 import { Search, ListFilter, X, Palette, Shirt, Tag as TagIcon, Star, Zap, Heart, Eye } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ProductItemCard = ({ id, name, price, imageSrc, category, onWishlistClick }) => (
@@ -29,7 +30,7 @@ const ProductItemCard = ({ id, name, price, imageSrc, category, onWishlistClick 
     <Link to={`/tienda/${id}`} className="block flex-grow flex flex-col">
       <div className="aspect-[3/4] bg-muted/30 overflow-hidden">
         <img 
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           alt={name}
          src="https://images.unsplash.com/photo-1582897631533-1e85a72cb821" />
       </div>
@@ -56,9 +57,14 @@ const ShopPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [priceRange, setPriceRange] = useState([0, 100]);
+  const { toast } = useToast();
 
   const handleWishlistClick = (productId) => {
-    console.log(`Producto ${productId} añadido/quitado de la lista de deseos en ShopPage`);
+    toast({
+      title: "Lista de deseos",
+      description: `Producto ${productId} añadido/quitado de la lista de deseos en ShopPage`,
+      className: "bg-card text-foreground border-primary",
+    });
   };
 
   const allProducts = [
@@ -210,7 +216,7 @@ const ShopPage = () => {
             </motion.div>
           ) : (
             <div className="text-center py-16 glassmorphism-card rounded-lg">
-              <img  src="/empty-search.svg" alt="No se encontraron productos con forma de planeta triste" class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 text-muted-foreground opacity-70" src="https://images.unsplash.com/photo-1665218627423-47e531284a4c" />
+              <img  src="/empty-search.svg" alt="No se encontraron productos con forma de planeta triste" className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 text-muted-foreground opacity-70" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Sin Resultados Cósmicos</h3>
               <p className="text-muted-foreground">Intenta ajustar tus filtros o términos de búsqueda para encontrar tu próxima remera estelar.</p>
             </div>

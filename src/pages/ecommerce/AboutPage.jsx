@@ -64,7 +64,7 @@ const AboutPage = () => {
               transition={{ duration: 0.7 }}
               className="aspect-square"
             >
-              <img  class="rounded-xl shadow-2xl w-full h-full object-cover" alt="Nebulosa colorida en el espacio profundo" src="https://images.unsplash.com/photo-1638406370590-c14b61ca49d9" />
+              <img  className="rounded-xl shadow-2xl w-full h-full object-cover" alt="Nebulosa colorida en el espacio profundo" src="https://images.unsplash.com/photo-1638406370590-c14b61ca49d9" />
             </motion.div>
           </div>
         </div>
@@ -121,7 +121,7 @@ const AboutPage = () => {
                 className="glassmorphism-card p-6 text-center"
               >
                 <div className="w-32 h-32 rounded-full mx-auto mb-5 overflow-hidden border-2 border-primary/50">
-                  <img  src={member.imageSrc} alt={member.name} class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1637774690422-0a7b35955c06" />
+                  <img  src={member.imageSrc} alt={member.name} className="w-full h-full object-cover" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground">{member.name}</h3>
                 <p className="text-primary text-sm mb-2">{member.role}</p>

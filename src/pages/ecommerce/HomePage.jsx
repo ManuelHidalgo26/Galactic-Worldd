@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, Zap, ShieldCheck, Truck, Star, Heart, Eye } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const ProductCard = ({ id, name, price, imageSrc, delay, isNew = false, onWishlistClick }) => (
   <motion.div
@@ -28,7 +29,7 @@ const ProductCard = ({ id, name, price, imageSrc, delay, isNew = false, onWishli
     <Link to={`/tienda/${id}`} className="block flex-grow flex flex-col">
       <div className="aspect-[3/4] bg-muted/30 overflow-hidden">
         <img 
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           alt={name}
          src="https://images.unsplash.com/photo-1696497197483-8edbe1316cf7" />
       </div>
@@ -56,8 +57,13 @@ const FeatureHighlight = ({ icon, title, description }) => (
 );
 
 const HomePage = () => {
+  const { toast } = useToast();
   const handleWishlistClick = (productId) => {
-    console.log(`Producto ${productId} añadido/quitado de la lista de deseos`);
+    toast({
+      title: "Lista de deseos",
+      description: `Producto ${productId} añadido/quitado de la lista de deseos`,
+      className: "bg-card text-foreground border-primary",
+    });
   };
 
   const newArrivals = [
@@ -207,7 +213,7 @@ const HomePage = () => {
                 className="lg:w-2/5 mt-8 lg:mt-0"
               >
                 <img 
-                  class="rounded-lg shadow-2xl w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  className="rounded-lg shadow-2xl w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                   alt="Astronauta con traje espacial moderno mirando las estrellas"
                  src="https://images.unsplash.com/photo-1639823933284-3dba80c84a96" />
               </motion.div>
