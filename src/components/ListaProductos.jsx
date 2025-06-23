@@ -3,8 +3,8 @@ import { getProductos } from "../lib/productos";
 
 const ListaProductos = () => {
 const [productos, setProductos] = useState([]);
-const [loading, setLoading] = useState(true);      
-const [error, setError] = useState(null);           
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState(null);
 
 useEffect(() => {
     const fetchProductos = async () => {
@@ -32,7 +32,7 @@ return (
         <p>No hay productos disponibles.</p>
     ) : (
         <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-        {productos.map(p => (
+        {productos.map((p) => (
             <div
             key={p.id}
             style={{
@@ -42,6 +42,34 @@ return (
                 width: "200px",
             }}
             >
+            {p.imagen ? (
+                <img
+                src={p.imagen}
+                alt={p.nombre}
+                style={{
+                    width: "100%",
+                    height: "150px",
+                    objectFit: "cover",
+                    borderRadius: "4px",
+                    marginBottom: "10px"
+                }}
+                />
+            ) : (
+                <div
+                style={{
+                    width: "100%",
+                    height: "150px",
+                    background: "#eee",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: "4px",
+                    marginBottom: "10px"
+                }}
+                >
+                <span style={{ color: "#777" }}>Sin imagen</span>
+                </div>
+            )}
             <h3>{p.nombre}</h3>
             <p><strong>Precio:</strong> ${p.precio}</p>
             <p><strong>Talle:</strong> {p.talle}</p>

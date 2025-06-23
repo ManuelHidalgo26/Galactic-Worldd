@@ -22,16 +22,17 @@ const ShopPage = () => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    const cargar = async () => {
-      try {
-        const data = await getProductos();
-        setProductos(data);
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    cargar();
-  }, []);
+  const cargar = async () => {
+    try {
+      const data = await getProductos();
+      setProductos(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  cargar();
+}, []);
+
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
