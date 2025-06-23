@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getProductos } from "@/lib/firebase";
+import { getProductos } from "@/lib/productos";
 
 const ProductCard = ({ producto }) => (
   <div className="glassmorphism-card overflow-hidden flex flex-col">
