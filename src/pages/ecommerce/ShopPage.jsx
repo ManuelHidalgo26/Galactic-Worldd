@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { getProductos } from "@/lib/productos";
 
 const ProductCard = ({ producto }) => (
   <div className="glassmorphism-card overflow-hidden flex flex-col">
@@ -24,7 +23,9 @@ const ShopPage = () => {
   useEffect(() => {
   const cargar = async () => {
     try {
-      const data = await getProductos();
+      const res = await fetch('http://localhost:4000/api/productos');
+      if (!res.ok) throw new Error('Network response was not ok');
+      const data = await res.json();
       setProductos(data);
     } catch (e) {
       console.error(e);
