@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, Zap, ShieldCheck, Truck, Star, Heart, Eye } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import { getProductos } from "@/lib/productos";
 
 const ProductCard = ({ producto, delay, isNew = false, onWishlistClick }) => (
   <motion.div
@@ -71,7 +70,13 @@ const HomePage = () => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    getProductos().then(setProductos).catch(console.error);
+    fetch('http://localhost:4000/api/productos')
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
+      .then(setProductos)
+      .catch(console.error);
   }, []);
 
   const newArrivals = productos.slice(0, 4);

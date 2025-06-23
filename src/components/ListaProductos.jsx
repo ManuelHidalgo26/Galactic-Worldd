@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { getProductos } from "../lib/productos";
 
 const ListaProductos = () => {
 const [productos, setProductos] = useState([]);
@@ -9,7 +8,9 @@ const [error, setError] = useState(null);
 useEffect(() => {
     const fetchProductos = async () => {
     try {
-        const data = await getProductos();
+        const res = await fetch('http://localhost:4000/api/productos');
+        if (!res.ok) throw new Error('Network response was not ok');
+        const data = await res.json();
         setProductos(data);
     } catch (err) {
         setError("Error al cargar productos.");
