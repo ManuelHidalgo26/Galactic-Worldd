@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, Zap, ShieldCheck, Truck, Star, Heart, Eye } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { getProductos } from "@/lib/firebase";
 
 const ProductCard = ({ producto, delay, isNew = false, onWishlistClick }) => (
   <motion.div

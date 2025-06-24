@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -57,9 +56,9 @@ const Skills = () => {
       title: "Bases de Datos",
       icon: <Database className="text-green-600 dark:text-green-400" size={24} />,
       skills: [
-        { name: "MongoDB", level: 85 },
+        { name: "MongoDB", level: 90 },
         { name: "PostgreSQL", level: 80 },
-        { name: "Firebase", level: 88 },
+        { name: "Cloudinary", level: 85 },
         { name: "Redis", level: 70 },
       ],
     },
@@ -158,9 +157,9 @@ const Skills = () => {
           >
             <div className="inline-flex flex-wrap justify-center gap-2">
               {[
-                "JavaScript", "TypeScript", "React", "Node.js", "Express", 
-                "MongoDB", "PostgreSQL", "HTML5", "CSS3", "Tailwind CSS", 
-                "Git", "Docker", "AWS", "Firebase", "Redux", "GraphQL", 
+                "JavaScript", "TypeScript", "React", "Node.js", "Express",
+                "MongoDB", "Cloudinary", "HTML5", "CSS3", "Tailwind CSS",
+                "Git", "Docker", "AWS", "Redux", "GraphQL",
                 "Jest", "Cypress", "Webpack", "Vite"
               ].map((tech, index) => (
                 <span key={index} className="skill-badge">
