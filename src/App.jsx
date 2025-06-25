@@ -16,6 +16,7 @@ const ContactPage = lazy(() => import("@/pages/ecommerce/ContactPage"));
 const OrderSuccessPage = lazy(() => import("@/pages/ecommerce/OrderSuccessPage"));
 const BlogPage = lazy(() => import("@/pages/ecommerce/BlogPage"));
 const WishlistPage = lazy(() => import("@/pages/ecommerce/WishlistPage"));
+const AdminProductForm = lazy(() => import("@/pages/ecommerce/AdminProductForm"));
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
               <Route path="/pedido-exitoso" element={<OrderSuccessPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/lista-deseos" element={<WishlistPage />} />
+              <Route path="/admin/nuevo-producto" element={<AdminProductForm />} />
             </Routes>
           </Suspense>
         </main>

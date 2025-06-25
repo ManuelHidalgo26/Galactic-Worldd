@@ -2,13 +2,14 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Menu, X, ShoppingCart, Home, Shirt, Info, Mail, BookOpen, Heart } from "lucide-react";
+import { Menu, X, ShoppingCart, Home, Shirt, Info, Mail, BookOpen, Heart, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const logoDark = "./public/logo_web_transparente.png";
+  const isAdmin = typeof window !== 'undefined' && localStorage.getItem('isAdmin') === 'true';
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -27,6 +28,10 @@ const Navbar = () => {
     { to: "/sobre-nosotros", label: "Nosotros", icon: <Info size={18} /> },
     { to: "/contacto", label: "Contacto", icon: <Mail size={18} /> },
   ];
+
+  if (isAdmin) {
+    navLinks.push({ to: "/admin/nuevo-producto", label: "Admin", icon: <Plus size={18} /> });
+  }
 
   const activeLinkClass = "text-primary font-semibold hero-text-shadow";
   const inactiveLinkClass = "hover:text-primary transition-colors text-foreground/80 hover:hero-text-shadow";
