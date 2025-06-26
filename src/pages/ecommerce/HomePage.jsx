@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, Zap, ShieldCheck, Truck, Star, Heart, Eye } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import { getProductos } from "@/lib/firebase";
 
 const ProductCard = ({ producto, delay, isNew = false, onWishlistClick }) => (
   <motion.div
@@ -80,9 +79,9 @@ const HomePage = () => {
       .catch(console.error);
   }, []);
 
-  const newArrivals = productos.slice(0, 4);
+  const newArrivals = productos.slice(0, 3);
 
-  const bestSellers = productos.slice(4);
+  const bestSellers = productos.slice(3, 6);
 
   const highlights = [
     { icon: <Zap />, title: "Diseños Únicos", description: "Estampados exclusivos inspirados en el cosmos." },
@@ -152,9 +151,13 @@ const HomePage = () => {
             </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {newArrivals.map((product) => (
-              <ProductCard key={product.id} producto={product} onWishlistClick={handleWishlistClick} />
-            ))}
+            {newArrivals.length === 0 ? (
+              <p className="col-span-full text-center">No hay productos disponibles.</p>
+            ) : (
+              newArrivals.map((product) => (
+                <ProductCard key={product.id} producto={product} onWishlistClick={handleWishlistClick} />
+              ))
+            )}
           </div>
         </div>
       </section>
@@ -174,9 +177,13 @@ const HomePage = () => {
             </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {bestSellers.map((product) => (
-              <ProductCard key={product.id} producto={product} onWishlistClick={handleWishlistClick}/>
-            ))}
+            {bestSellers.length === 0 ? (
+              <p className="col-span-full text-center">No hay productos disponibles.</p>
+            ) : (
+              bestSellers.map((product) => (
+                <ProductCard key={product.id} producto={product} onWishlistClick={handleWishlistClick}/>
+              ))
+            )}
           </div>
           <div className="text-center mt-16">
             <Button size="lg" variant="outline" className="outline-cta-button border-2 text-base py-3 px-8 rounded-full hover:scale-105 transform transition-all duration-300" asChild>
